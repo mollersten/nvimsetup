@@ -29,3 +29,12 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.g.mapleader = " "
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+    callback = function()
+        vim.highlight.on_yank {
+            higroup = "IncSearch", -- or any highlight group you like
+            timeout = 50,          -- time in ms
+        }
+    end,
+})
